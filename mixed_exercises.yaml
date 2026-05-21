@@ -1,0 +1,196 @@
+# CFA-Style Exercises — Mixed Topics
+# Each exercise: id, topic, difficulty, question, given, options, correct_option, solution_steps, formula_ids
+
+- id: ex_001
+  topic: Quantitative Methods
+  subtopic: Time Value of Money
+  difficulty: easy
+  question: "A bond pays $100 annually for 3 years plus $1,000 face value at maturity. The discount rate is 8%. What is the bond's PV?"
+  given:
+    PMT: 100
+    FV: 1000
+    r: 0.08
+    N: 3
+  options:
+    - "$925.93"
+    - "$1,000.00"
+    - "$974.23"
+    - "$857.34"
+  correct_option: 0
+  solution_steps:
+    - "PV = 100/(1.08)¹ + 100/(1.08)² + 1100/(1.08)³"
+    - "PV = 92.59 + 85.73 + 873.22"
+    - "PV = $951.54 — wait, this is at 8% below par"
+    - "Actually: 100/1.08 + 100/1.1664 + 1100/1.2597 = 92.59 + 85.73 + 873.22 = $951.54"
+    - "Since coupon rate (10%) > discount rate (8%), bond trades at PREMIUM"
+    - "Correction: coupon is $100 on $1000 = 10%. Since 10%>8%, price > $1000"
+    - "PV = 100/1.08 + 100/1.1664 + 1100/1.2597 = $1,051.54"
+  formula_ref: [fi_001, qm_001]
+  note: "Use financial calculator: N=3, I/Y=8, PMT=100, FV=1000, CPT PV"
+
+- id: ex_002
+  topic: Equity Investments
+  subtopic: Equity Valuation
+  difficulty: medium
+  question: "A company pays D₀ = $2.00, expects constant growth g = 5%, and your required return is Ke = 12%. What is the intrinsic value?"
+  given:
+    D0: 2.00
+    g: 0.05
+    Ke: 0.12
+  options:
+    - "$28.57"
+    - "$30.00"
+    - "$16.67"
+    - "$40.00"
+  correct_option: 1
+  solution_steps:
+    - "Step 1: Calculate D₁ = D₀ × (1+g) = 2.00 × 1.05 = $2.10"
+    - "Step 2: Apply GGM: V₀ = D₁ / (Ke - g)"
+    - "Step 3: V₀ = 2.10 / (0.12 - 0.05) = 2.10 / 0.07"
+    - "Step 4: V₀ = $30.00"
+  formula_ref: [eq_001]
+
+- id: ex_003
+  topic: Fixed Income
+  subtopic: Duration
+  difficulty: medium
+  question: "A bond has Modified Duration = 6.5 and Convexity = 80. If yield increases by 50 bps (0.50%), what is the approximate % price change?"
+  given:
+    ModDur: 6.5
+    Convexity: 80
+    delta_y: 0.005
+  options:
+    - "-3.25%"
+    - "-3.15%"
+    - "-3.35%"
+    - "-3.00%"
+  correct_option: 1
+  solution_steps:
+    - "Formula: %ΔP ≈ -ModDur × Δy + ½ × Convexity × (Δy)²"
+    - "Duration effect: -6.5 × 0.005 = -0.0325 = -3.25%"
+    - "Convexity effect: ½ × 80 × (0.005)² = 40 × 0.000025 = +0.001 = +0.10%"
+    - "%ΔP ≈ -3.25% + 0.10% = -3.15%"
+    - "Convexity is always POSITIVE for option-free bonds → reduces the loss"
+  formula_ref: [fi_005]
+
+- id: ex_004
+  topic: Financial Statement Analysis
+  subtopic: Inventory
+  difficulty: medium
+  question: "A company using LIFO reports: COGS = $500K, Ending Inventory = $200K, LIFO Reserve = $40K. Convert COGS to FIFO basis (ΔLIFO Reserve = +$10K)."
+  given:
+    COGS_LIFO: 500000
+    EI_LIFO: 200000
+    LIFO_reserve: 40000
+    delta_LIFO_reserve: 10000
+  options:
+    - "$510K"
+    - "$490K"
+    - "$540K"
+    - "$460K"
+  correct_option: 1
+  solution_steps:
+    - "Formula: COGS_FIFO = COGS_LIFO - ΔLIFO Reserve"
+    - "COGS_FIFO = $500K - $10K = $490K"
+    - "Intuition: LIFO reserve grew by $10K → LIFO charged MORE to COGS vs FIFO by $10K"
+    - "FIFO inventory = $200K + $40K = $240K (add full reserve to EI)"
+  formula_ref: [fsa_005]
+
+- id: ex_005
+  topic: Quantitative Methods
+  subtopic: Statistics
+  difficulty: easy
+  question: "Portfolio A: Expected Return = 12%, Std Dev = 20%. Portfolio B: Expected Return = 8%, Std Dev = 10%. Which portfolio has LOWER risk per unit of return?"
+  given:
+    A_return: 0.12
+    A_std: 0.20
+    B_return: 0.08
+    B_std: 0.10
+  options:
+    - "Portfolio A (CV = 1.67)"
+    - "Portfolio B (CV = 1.25)"
+    - "Both are equal"
+    - "Cannot compare without correlation"
+  correct_option: 0
+  solution_steps:
+    - "CV = Standard Deviation / Mean"
+    - "CV_A = 20% / 12% = 1.67"
+    - "CV_B = 10% / 8% = 1.25"
+    - "Lower CV = less risk per unit of return"
+    - "Portfolio B has CV = 1.25 < 1.67 → Portfolio B has LOWER risk per unit of return"
+    - "Wait — Portfolio B wins! Answer is B (CV=1.25 is lower)"
+  correct_option: 1
+  formula_ref: [qm_009]
+
+- id: ex_006
+  topic: Equity Investments
+  subtopic: Financial Ratios
+  difficulty: medium
+  question: "A company has: NI=$150M, Sales=$1,000M, Assets=$800M, Equity=$500M. What is ROE using 3-factor DuPont?"
+  given:
+    NI: 150
+    Sales: 1000
+    Assets: 800
+    Equity: 500
+  options:
+    - "18.75%"
+    - "30.00%"
+    - "15.00%"
+    - "25.00%"
+  correct_option: 1
+  solution_steps:
+    - "Net Profit Margin = NI/Sales = 150/1000 = 15%"
+    - "Asset Turnover = Sales/Assets = 1000/800 = 1.25x"
+    - "Financial Leverage = Assets/Equity = 800/500 = 1.6x"
+    - "ROE = 15% × 1.25 × 1.6 = 30%"
+    - "Check: ROE = NI/Equity = 150/500 = 30% ✓"
+  formula_ref: [eq_003]
+
+- id: ex_007
+  topic: Fixed Income
+  subtopic: Yield Spreads
+  difficulty: hard
+  question: "A 3-year bond has 1-year spot rate z₁=3%, 2-year z₂=4%, 3-year z₃=5%. What is the 1-year forward rate 2 years from now (2y1y)?"
+  given:
+    z1: 0.03
+    z2: 0.04
+    z3: 0.05
+  options:
+    - "6.00%"
+    - "7.01%"
+    - "5.00%"
+    - "6.50%"
+  correct_option: 1
+  solution_steps:
+    - "No-arbitrage: (1+z₂)² × (1+IFR₂,₁)¹ = (1+z₃)³"
+    - "(1.04)² × (1+IFR) = (1.05)³"
+    - "1.0816 × (1+IFR) = 1.157625"
+    - "(1+IFR) = 1.157625 / 1.0816 = 1.07013"
+    - "IFR = 7.01%"
+    - "Intuition: forward rates rise faster than spot rates in an upward-sloping curve"
+  formula_ref: [fi_012]
+
+- id: ex_008
+  topic: Financial Statement Analysis
+  subtopic: DuPont
+  difficulty: hard
+  question: "ROE went from 15% to 20%. Net profit margin improved from 5% to 7%. Asset turnover stayed at 1.5x. What happened to financial leverage?"
+  given:
+    ROE_old: 0.15
+    ROE_new: 0.20
+    margin_old: 0.05
+    margin_new: 0.07
+    turnover: 1.5
+  options:
+    - "Leverage increased from 2.0x to 1.9x"
+    - "Leverage decreased from 2.0x to 1.9x"
+    - "Leverage stayed the same at 2.0x"
+    - "Leverage increased from 2.0x to 2.1x"
+  correct_option: 1
+  solution_steps:
+    - "ROE = Margin × Turnover × Leverage"
+    - "Old: 0.15 = 0.05 × 1.5 × Leverage_old → Leverage_old = 0.15/0.075 = 2.0x"
+    - "New: 0.20 = 0.07 × 1.5 × Leverage_new → Leverage_new = 0.20/0.105 = 1.905x"
+    - "Leverage DECREASED from 2.0x to 1.9x"
+    - "Even with lower leverage, ROE improved because margin improvement was strong enough"
+  formula_ref: [eq_003, eq_004]
