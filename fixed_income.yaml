@@ -1,0 +1,193 @@
+# Fixed Income — Formulas & Key Concepts
+
+- id: fi_001
+  topic: Fixed Income
+  subtopic: Bond Valuation
+  name: Bond Price (PV of Cash Flows)
+  formula: "PV = PMT/(1+r)¹ + PMT/(1+r)² + ... + (PMT+FV)/(1+r)^N"
+  latex: "PV = \\sum_{t=1}^{N}\\frac{PMT}{(1+r)^t} + \\frac{FV}{(1+r)^N}"
+  intuition: "A bond is just a series of future cash flows. Discount each coupon and the face value back to today. The discount rate (YTM) is the bond's internal rate of return."
+  memory_hook: "Coupon stream + face value, all discounted. CR=MDR → par; CR<MDR → discount; CR>MDR → premium."
+  tags: [bonds, valuation, core, level1]
+  options:
+    - "PV = FV / (1+r)^N"
+    - "PV = PMT × N + FV / (1+r)^N"
+    - "PV = Σ PMT/(1+r)^t + FV/(1+r)^N"
+    - "PV = PMT / r + FV"
+  correct_option: 2
+
+- id: fi_002
+  topic: Fixed Income
+  subtopic: Bond Valuation
+  name: Price-Yield Relationship Rules
+  formula: "CR=MDR→Par | CR<MDR→Discount | CR>MDR→Premium"
+  latex: "\\text{If } c = y \\Rightarrow P=FV; \\quad c < y \\Rightarrow P<FV; \\quad c > y \\Rightarrow P>FV"
+  intuition: "If the market demands a higher yield than the coupon pays, the bond must sell below par to compensate. If coupon > yield demanded, bond sells at premium."
+  memory_hook: "Think of it competitively: if your coupon is 'below market', you compensate with a lower price."
+  tags: [bonds, valuation, level1]
+  options:
+    - "Higher coupon → lower price"
+    - "If coupon rate < market rate → bond trades at premium"
+    - "If coupon rate < market rate → bond trades at discount"
+    - "Coupon rate equals yield only for zero-coupon bonds"
+  correct_option: 2
+
+- id: fi_003
+  topic: Fixed Income
+  subtopic: Duration
+  name: Modified Duration (price sensitivity)
+  formula: "%ΔP ≈ -ModDur × ΔYield"
+  latex: "\\%\\Delta PV \\approx -D_{mod} \\times \\Delta y"
+  intuition: "If ModDur = 5 and yield rises 1%, price falls ~5%. Duration is the KEY risk measure for bonds. Negative sign: price and yield move inversely."
+  memory_hook: "Duration = sensitivity. 1% yield change × duration = % price change. Always negative sign."
+  tags: [duration, risk, core, level1]
+  options:
+    - "%ΔP ≈ ModDur × ΔYield"
+    - "%ΔP ≈ -ModDur × ΔYield"
+    - "%ΔP ≈ -ModDur / ΔYield"
+    - "%ΔP ≈ ModDur × ΔYield²"
+  correct_option: 1
+
+- id: fi_004
+  topic: Fixed Income
+  subtopic: Duration
+  name: Modified Duration formula
+  formula: "ModDur = MacDur / (1 + r)"
+  latex: "D_{mod} = \\frac{D_{Mac}}{1 + r/m}"
+  intuition: "Macaulay duration is in years; Modified duration translates it to price sensitivity. Divide Mac by (1+r) to get the usable risk measure."
+  memory_hook: "ModDur = MacDur ÷ (1+r). MacDur is weighted average time; ModDur is price elasticity."
+  tags: [duration, level1]
+  options:
+    - "ModDur = MacDur × (1 + r)"
+    - "ModDur = MacDur / r"
+    - "ModDur = MacDur / (1 + r)"
+    - "ModDur = MacDur - (1 + r)"
+  correct_option: 2
+
+- id: fi_005
+  topic: Fixed Income
+  subtopic: Duration
+  name: Convexity adjustment
+  formula: "%ΔP ≈ -ModDur × Δy + ½ × Convexity × (Δy)²"
+  latex: "\\%\\Delta PV \\approx -D_{mod}\\Delta y + \\frac{1}{2}Conv(\\Delta y)^2"
+  intuition: "Duration is a linear approximation — it works for small yield changes. Convexity corrects for the curvature of the price-yield relationship. For large moves, convexity matters a lot."
+  memory_hook: "Duration gives direction; convexity adds the curve correction. Convexity always helps (positive for option-free bonds)."
+  tags: [duration, convexity, level1]
+  options:
+    - "%ΔP ≈ -ModDur × Δy"
+    - "%ΔP ≈ -ModDur × Δy + ½ × Convexity × Δy"
+    - "%ΔP ≈ -ModDur × Δy + ½ × Convexity × (Δy)²"
+    - "%ΔP ≈ -ModDur × Δy - ½ × Convexity × (Δy)²"
+  correct_option: 2
+
+- id: fi_006
+  topic: Fixed Income
+  subtopic: Yield Spreads
+  name: Z-spread definition
+  formula: "PV = Σ PMT/(1 + z_t + Z)^t + FV/(1+z_N+Z)^N"
+  latex: "PV = \\sum_{t=1}^N \\frac{PMT}{(1+z_t+Z)^t} + \\frac{FV}{(1+z_N+Z)^N}"
+  intuition: "The constant spread added to each spot rate that makes the PV equal the bond's price. Unlike G-spread (single benchmark yield), Z-spread accounts for the full yield curve shape."
+  memory_hook: "Z-spread uses the ENTIRE spot rate curve. G-spread uses just one benchmark yield. Z > G when yield curve is upward sloping."
+  tags: [spreads, yield, level1]
+  options:
+    - "YTM minus the risk-free rate"
+    - "Constant spread over LIBOR"
+    - "Constant spread over each spot rate that equates PV to price"
+    - "Z-spread = OAS + option value"
+  correct_option: 2
+
+- id: fi_007
+  topic: Fixed Income
+  subtopic: Yield Spreads
+  name: OAS (Option-Adjusted Spread)
+  formula: "OAS = Z-spread - Option value (bps)"
+  latex: "OAS = Z\\text{-spread} - \\text{Option value}"
+  intuition: "For callable bonds, the Z-spread includes compensation for the call option. OAS strips out the option value to give you the pure credit/liquidity spread. OAS is the spread on an option-free basis."
+  memory_hook: "OAS = Z-spread MINUS option value. For callable: Z > OAS (call option hurts bondholder). For putable: Z < OAS."
+  tags: [spreads, options, level1]
+  options:
+    - "OAS = Z-spread + Option value"
+    - "OAS = Z-spread - Option value"
+    - "OAS = G-spread - Option value"
+    - "OAS = Z-spread × Option value"
+  correct_option: 1
+
+- id: fi_008
+  topic: Fixed Income
+  subtopic: Duration
+  name: Duration Gap
+  formula: "Duration Gap = MacDur - Investment Horizon"
+  latex: "\\text{Duration Gap} = D_{Mac} - H"
+  intuition: "If gap > 0: price risk dominates (yields rise → portfolio suffers). If gap < 0: reinvestment risk dominates. Gap = 0 means you're immunized — price and reinvestment risks offset perfectly."
+  memory_hook: "Gap > 0 → more duration than horizon → price risk. Gap < 0 → horizon > duration → reinvestment risk."
+  tags: [duration, immunization, level1]
+  options:
+    - "Duration Gap = ModDur - Investment Horizon"
+    - "Duration Gap = MacDur + Investment Horizon"
+    - "Duration Gap = MacDur - Investment Horizon"
+    - "Duration Gap = Investment Horizon - ModDur"
+  correct_option: 2
+
+- id: fi_009
+  topic: Fixed Income
+  subtopic: Credit
+  name: Expected Loss
+  formula: "E[Loss] = P(Default) × Loss Severity = P(Default) × (1 - Recovery Rate)"
+  latex: "E[Loss] = P(D) \\times (1 - RR)"
+  intuition: "Credit risk has two components: how likely is default, and how much will you recover if it defaults? A bond with high probability but high recovery might be safer than one with low prob but zero recovery."
+  memory_hook: "E[Loss] = Probability × Severity. Severity = 1 - Recovery Rate."
+  tags: [credit, risk, level1]
+  options:
+    - "E[Loss] = P(Default) + Loss Severity"
+    - "E[Loss] = P(Default) × Recovery Rate"
+    - "E[Loss] = P(Default) × (1 - Recovery Rate)"
+    - "E[Loss] = Loss Severity / P(Default)"
+  correct_option: 2
+
+- id: fi_010
+  topic: Fixed Income
+  subtopic: Bond Valuation
+  name: Callable vs Putable Bond Values
+  formula: "V_callable = V_straight - V_call | V_putable = V_straight + V_put"
+  latex: "V_{callable} = V_{straight} - V_{call}; \\quad V_{putable} = V_{straight} + V_{put}"
+  intuition: "The call option benefits the ISSUER (hurts the investor), so subtract it. The put option benefits the INVESTOR, so add it. Options shift value between issuer and investor."
+  memory_hook: "Callable: you give up a call option to the issuer → worth less. Putable: you get a put option → worth more."
+  tags: [bonds, options, embedded, level1]
+  options:
+    - "V_callable = V_straight + V_call"
+    - "V_callable = V_straight - V_call AND V_putable = V_straight + V_put"
+    - "V_callable = V_straight - V_call AND V_putable = V_straight - V_put"
+    - "Both callable and putable bonds worth less than straight bonds"
+  correct_option: 1
+
+- id: fi_011
+  topic: Fixed Income
+  subtopic: Yield Measures
+  name: Current Yield
+  formula: "Current Yield = Annual Coupon / Bond Flat Price"
+  latex: "CY = \\frac{\\text{Annual Coupon}}{P_{flat}}"
+  intuition: "A quick-and-dirty yield measure. It ignores time value and capital gains/losses. A bond at a discount will have CY < YTM because you also gain the pull-to-par effect."
+  memory_hook: "CY = coupon ÷ price. Incomplete: ignores capital gain/loss. YTM > CY for discount bonds."
+  tags: [yield, bonds, level1]
+  options:
+    - "Annual Coupon / Face Value"
+    - "Annual Coupon / Bond Full Price"
+    - "Annual Coupon / Bond Flat Price"
+    - "YTM - credit spread"
+  correct_option: 2
+
+- id: fi_012
+  topic: Fixed Income
+  subtopic: Yield Spreads
+  name: Implied Forward Rate
+  formula: "(1 + zA)^A × (1 + IFR_{A,B-A})^(B-A) = (1 + zB)^B"
+  latex: "(1+z_A)^A \\times (1+f_{A,B-A})^{B-A} = (1+z_B)^B"
+  intuition: "The forward rate is the rate implied by two spot rates that makes you indifferent between investing for B years vs. investing for A years and rolling over. No-arbitrage condition."
+  memory_hook: "Long spot = Short spot × Forward. Solve for the forward rate algebraically."
+  tags: [yield, forward, level1]
+  options:
+    - "(1+zA)^A + (1+IFR)^(B-A) = (1+zB)^B"
+    - "(1+zA)^A × (1+IFR)^(B-A) = (1+zB)^B"
+    - "(1+zA)^B × (1+IFR)^A = (1+zB)^A"
+    - "IFR = zB - zA"
+  correct_option: 1

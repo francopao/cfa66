@@ -1,0 +1,193 @@
+# Equity Investments — Formulas & Key Concepts
+
+- id: eq_001
+  topic: Equity Investments
+  subtopic: Equity Valuation
+  name: Gordon Growth Model (GGM)
+  formula: "V₀ = D₁ / (Ke - g)"
+  latex: "V_0 = \\frac{D_1}{K_e - g}"
+  intuition: "Value a stock paying a constant-growth dividend forever. Key insight: if g ≥ Ke, the model breaks (infinite value). Growth must be sustainable and less than discount rate."
+  memory_hook: "GGM = D1 ÷ (r - g). D1 is NEXT year's dividend. g = RR × ROE."
+  tags: [equity, valuation, ddm, core, level1]
+  options:
+    - "V₀ = D₀ / (Ke - g)"
+    - "V₀ = D₁ / Ke"
+    - "V₀ = D₁ / (Ke - g)"
+    - "V₀ = D₁ / (Ke + g)"
+  correct_option: 2
+
+- id: eq_002
+  topic: Equity Investments
+  subtopic: Equity Valuation
+  name: Sustainable Growth Rate
+  formula: "g = Retention Rate × ROE = (1 - D/E) × ROE"
+  latex: "g = b \\times ROE = (1 - \\text{payout}) \\times ROE"
+  intuition: "How fast can a company grow without issuing new equity? Determined by how much profit it retains (b) and how productively it deploys that retained capital (ROE)."
+  memory_hook: "g = b × ROE. b = retention ratio = 1 - payout ratio. More retention + higher ROE = faster growth."
+  tags: [equity, growth, valuation, level1]
+  options:
+    - "g = ROE / Retention Rate"
+    - "g = Payout Ratio × ROE"
+    - "g = (1 - Payout Ratio) × ROE"
+    - "g = ROE × Dividend/Earnings"
+  correct_option: 2
+
+- id: eq_003
+  topic: Equity Investments
+  subtopic: Financial Ratios
+  name: DuPont Analysis (3-factor)
+  formula: "ROE = Net Profit Margin × Asset Turnover × Financial Leverage"
+  latex: "ROE = \\frac{NI}{Sales} \\times \\frac{Sales}{Assets} \\times \\frac{Assets}{Equity}"
+  intuition: "ROE decomposed into three levers: profitability (what margin do you earn), efficiency (how well do you use assets), leverage (how much debt do you use). Diagnoses WHERE ROE changes come from."
+  memory_hook: "ROE = Margin × Turnover × Leverage. Multiply three fractions — everything cancels to NI/Equity."
+  tags: [equity, ratios, dupont, core, level1]
+  options:
+    - "ROE = Net Income / Equity"
+    - "ROE = Margin × Asset Turnover × Leverage"
+    - "ROE = Margin × Asset Turnover"
+    - "ROE = ROA × Leverage × Margin"
+  correct_option: 1
+
+- id: eq_004
+  topic: Equity Investments
+  subtopic: Financial Ratios
+  name: DuPont Analysis (5-factor)
+  formula: "ROE = Tax Burden × Interest Burden × EBIT Margin × Asset Turnover × Financial Leverage"
+  latex: "ROE = \\frac{NI}{EBT} \\times \\frac{EBT}{EBIT} \\times \\frac{EBIT}{Sales} \\times \\frac{Sales}{Assets} \\times \\frac{Assets}{Equity}"
+  intuition: "Extended DuPont separates tax efficiency and interest burden. Useful to see if ROE improved because of lower taxes vs. better operations. Each ratio tells a story about one lever of profitability."
+  memory_hook: "Tax Burden × Interest Burden × EBIT Margin × Turnover × Leverage. 5 fractions that telescope to NI/Equity."
+  tags: [equity, ratios, dupont, level1]
+  options:
+    - "3-factor DuPont is the only version"
+    - "NI/EBT × EBT/EBIT × EBIT/Sales × Sales/Assets × Assets/Equity"
+    - "NI/Sales × Sales/Assets × Assets/Equity × Tax × Interest"
+    - "EBIT/Sales × Sales/Assets × Assets/Equity"
+  correct_option: 1
+
+- id: eq_005
+  topic: Equity Investments
+  subtopic: Equity Valuation
+  name: Enterprise Value (EV)
+  formula: "EV = MV(Equity) + MV(Debt) + MV(Preferred) - Cash - ST Investments"
+  latex: "EV = MV_E + MV_D + MV_P - Cash"
+  intuition: "EV = total firm value regardless of capital structure. Subtract cash because an acquirer gets it back immediately. EV/EBITDA is capital-structure neutral — great for comparing firms with different leverage."
+  memory_hook: "EV = Market Cap + Debt - Cash. Think of it as 'what would it cost to buy the entire business?'"
+  tags: [equity, valuation, ev, level1]
+  options:
+    - "EV = MV(Equity) - MV(Debt)"
+    - "EV = MV(Equity) + MV(Debt) + MV(Preferred)"
+    - "EV = MV(Equity) + MV(Debt) + MV(Preferred) - Cash - ST Investments"
+    - "EV = Book Value of Assets - Book Value of Liabilities"
+  correct_option: 2
+
+- id: eq_006
+  topic: Equity Investments
+  subtopic: Financial Ratios
+  name: Liquidity Ratios
+  formula: "Current = CA/CL | Quick = (Cash+Securities+AR)/CL | Cash = (Cash+Securities)/CL"
+  latex: "\\text{Current} = \\frac{CA}{CL}; \\quad \\text{Quick} = \\frac{Cash+Sec+AR}{CL}"
+  intuition: "Measures ability to cover short-term obligations. Current includes inventory (less liquid). Quick excludes it. Cash ratio is most conservative. Higher = better liquidity, but too high may signal inefficiency."
+  memory_hook: "Current (includes inventory) > Quick (excludes inventory) > Cash (most conservative). Each is stricter."
+  tags: [equity, liquidity, ratios, level1]
+  options:
+    - "Current ratio = (Cash + AR) / CL"
+    - "Quick ratio includes inventory"
+    - "Current = CA/CL; Quick excludes inventory"
+    - "Cash ratio = CA / CL"
+  correct_option: 2
+
+- id: eq_007
+  topic: Equity Investments
+  subtopic: Financial Ratios
+  name: Cash Conversion Cycle (CCC)
+  formula: "CCC = Days Inventory + Days Receivables - Days Payables"
+  latex: "CCC = DIO + DSO - DPO"
+  intuition: "How many days cash is tied up in operations. Lower = better (cash returns to you faster). Negative CCC (like Amazon) means you collect from customers before paying suppliers — you're using their cash!"
+  memory_hook: "CCC = DIO + DSO - DPO. Cash locked in inventory → sales → collection → pay suppliers."
+  tags: [equity, ratios, working_capital, level1]
+  options:
+    - "CCC = DIO - DSO + DPO"
+    - "CCC = DIO + DSO + DPO"
+    - "CCC = DIO + DSO - DPO"
+    - "CCC = DSO + DPO - DIO"
+  correct_option: 2
+
+- id: eq_008
+  topic: Equity Investments
+  subtopic: Equity Valuation
+  name: FCFF from Net Income
+  formula: "FCFF = NI + NCC + Int×(1-t) - FCI - WCI"
+  latex: "FCFF = NI + NCC + I(1-t) - \\Delta FA - \\Delta WC"
+  intuition: "Free cash flow to ALL capital providers. Add back non-cash charges (depreciation). Add back after-tax interest (as if unlevered). Subtract investments needed to sustain/grow the business."
+  memory_hook: "Start with NI, add depreciation, add after-tax interest, subtract capex and WC increases."
+  tags: [equity, fcff, valuation, level1]
+  options:
+    - "FCFF = NI + NCC + Int×(1-t) - FCI - WCI"
+    - "FCFF = CFO + Int×(1-t) - FCI"
+    - "Both A and B are correct"
+    - "FCFF = EBIT×(1-t) + NCC - FCI - WCI"
+  correct_option: 2
+
+- id: eq_009
+  topic: Equity Investments
+  subtopic: Equity Valuation
+  name: FCFE from CFO
+  formula: "FCFE = CFO - FCI + Net Borrowing"
+  latex: "FCFE = CFO - FCI + \\Delta Debt"
+  intuition: "Free cash flow specifically to EQUITY holders after debt obligations are met. Simpler than FCFF — start from CFO, subtract capex needed, add new debt raised (equity holders benefit from debt financing)."
+  memory_hook: "FCFE = CFO - Capex + Net Borrowing. Alternatively: FCFF - Int×(1-t) + Net Borrowing."
+  tags: [equity, fcfe, valuation, level1]
+  options:
+    - "FCFE = FCFF + Int×(1-t) - Net Borrowing"
+    - "FCFE = CFO - FCI - Net Borrowing"
+    - "FCFE = CFO - FCI + Net Borrowing"
+    - "FCFE = NI + NCC - FCI - WCI"
+  correct_option: 2
+
+- id: eq_010
+  topic: Equity Investments
+  subtopic: Financial Ratios
+  name: P/E Ratio (Leading vs Trailing)
+  formula: "Leading P/E = Payout/(Ke-g) | Trailing P/E = Payout×(1+g)/(Ke-g)"
+  latex: "P_0/E_1 = \\frac{D_1/E_1}{K_e-g}; \\quad P_0/E_0 = \\frac{(D_0/E_0)(1+g)}{K_e-g}"
+  intuition: "P/E links to GGM: P/E = payout ratio ÷ (r-g). Higher growth or lower required return → higher P/E. Helps understand why growth stocks trade at high multiples."
+  memory_hook: "Leading P/E uses next year's earnings (E1). Trailing uses current (E0). GGM-derived: payout/(r-g)."
+  tags: [equity, multiples, valuation, level1]
+  options:
+    - "P/E = EPS / Price"
+    - "Leading P/E = Payout Rate / (Ke - g)"
+    - "Trailing P/E = D1/E1 ÷ (Ke - g)"
+    - "P/E is independent of growth rate"
+  correct_option: 1
+
+- id: eq_011
+  topic: Equity Investments
+  subtopic: Financial Ratios
+  name: Degree of Operating Leverage (DOL)
+  formula: "DOL = (Sales - Variable Costs) / EBIT = %ΔEBIT / %ΔSales"
+  latex: "DOL = \\frac{Sales - VC}{EBIT} = \\frac{\\%\\Delta EBIT}{\\%\\Delta Sales}"
+  intuition: "Measures how much EBIT amplifies a change in sales. High fixed costs → high DOL. A 10% sales increase with DOL=3 means 30% EBIT increase. Double-edged sword: amplifies losses too."
+  memory_hook: "DOL = Contribution Margin / EBIT. High fixed costs → high DOL → high operating risk."
+  tags: [equity, leverage, risk, level1]
+  options:
+    - "DOL = EBIT / (Sales - VC)"
+    - "DOL = Sales / EBIT"
+    - "DOL = (Sales - VC) / EBIT"
+    - "DOL = %ΔNet Income / %ΔSales"
+  correct_option: 2
+
+- id: eq_012
+  topic: Equity Investments
+  subtopic: Market Structure
+  name: Margin Call Price
+  formula: "Margin Call Price = P₀ × (1 - Initial Margin) / (1 - Maintenance Margin)"
+  latex: "P_{call} = P_0 \\times \\frac{1 - IM}{1 - MM}"
+  intuition: "The price at which your equity in a leveraged long position falls to the maintenance margin level. Below this, you get a margin call requiring you to deposit more funds."
+  memory_hook: "P_call = P₀ × (1-IM)/(1-MM). IM typically 50%, MM typically 25%. Price falls → equity ratio falls."
+  tags: [equity, margin, market_structure, level1]
+  options:
+    - "P₀ × (1 - MM) / (1 - IM)"
+    - "P₀ × IM / MM"
+    - "P₀ × (1 - IM) / (1 - MM)"
+    - "P₀ × (MM / IM)"
+  correct_option: 2

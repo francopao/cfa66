@@ -1,0 +1,242 @@
+# Quantitative Methods — Formulas & Key Concepts
+# Each card has: id, topic, subtopic, name, formula, latex, intuition, memory_hook, tags
+
+- id: qm_001
+  topic: Quantitative Methods
+  subtopic: Time Value of Money
+  name: Future Value
+  formula: "FV = PV × (1 + r)^N"
+  latex: "FV = PV(1+r)^N"
+  intuition: "Money grows exponentially. Each period, you earn interest on your principal AND on prior interest. That compounding effect is why time is your greatest ally as an investor."
+  memory_hook: "FV = PV × growth factor. The longer N, the bigger the snowball."
+  tags: [tvm, core, level1]
+  options:
+    - "FV = PV × (1 + r)^N"
+    - "FV = PV / (1 + r)^N"
+    - "FV = PV + r × N"
+    - "FV = PV × e^(rN)"
+  correct_option: 0
+
+- id: qm_002
+  topic: Quantitative Methods
+  subtopic: Time Value of Money
+  name: Present Value
+  formula: "PV = FV / (1 + r)^N"
+  latex: "PV = \\frac{FV}{(1+r)^N}"
+  intuition: "What is a future cash flow worth today? You discount it — the further away and the higher the rate, the less it's worth now."
+  memory_hook: "PV is FV deflated by time. Flip the FV formula."
+  tags: [tvm, core, level1]
+  options:
+    - "PV = FV × (1 + r)^N"
+    - "PV = FV / (1 + r)^N"
+    - "PV = FV - r × N"
+    - "PV = FV / N"
+  correct_option: 1
+
+- id: qm_003
+  topic: Quantitative Methods
+  subtopic: Time Value of Money
+  name: Effective Annual Rate (EAR)
+  formula: "EAR = (1 + r_stated/m)^m - 1"
+  latex: "EAR = \\left(1 + \\frac{r_s}{m}\\right)^m - 1"
+  intuition: "When compounding happens more than once a year, your effective return is higher than the stated rate. Monthly compounding of 12% ≠ 12% per year effectively."
+  memory_hook: "More frequent compounding → higher EAR. Continuous compounding: EAR = e^r - 1"
+  tags: [tvm, ear, level1]
+  options:
+    - "(1 + r/m)^m - 1"
+    - "(1 + r)^m - 1"
+    - "r/m × 12"
+    - "e^r - 1"
+  correct_option: 0
+
+- id: qm_004
+  topic: Quantitative Methods
+  subtopic: Time Value of Money
+  name: Perpetuity PV
+  formula: "PV = PMT / r"
+  latex: "PV_{perpetuity} = \\frac{PMT}{r}"
+  intuition: "A stream of equal payments forever. Divide the payment by the discount rate. Higher rate → lower value (you could earn more elsewhere)."
+  memory_hook: "Perpetuity: PMT ÷ r. Simple and elegant."
+  tags: [tvm, perpetuity, level1]
+  options:
+    - "PV = PMT × r"
+    - "PV = PMT / r"
+    - "PV = PMT × N / r"
+    - "PV = PMT / (r - g)"
+  correct_option: 1
+
+- id: qm_005
+  topic: Quantitative Methods
+  subtopic: Returns
+  name: Holding Period Return (HPR)
+  formula: "HPR = (Closing Price - Opening Price + Income) / Opening Price"
+  latex: "HPR = \\frac{P_1 - P_0 + I}{P_0}"
+  intuition: "Total return during holding period = price gain + income, as % of what you paid. Simple and fundamental."
+  memory_hook: "What you got out minus what you put in, plus dividends, divided by what you put in."
+  tags: [returns, core, level1]
+  options:
+    - "(P1 - P0) / P1"
+    - "(P1 - P0 + Income) / P0"
+    - "(P1 + Income) / P0"
+    - "(P1 - P0) / P0 + Income"
+  correct_option: 1
+
+- id: qm_006
+  topic: Quantitative Methods
+  subtopic: Returns
+  name: Geometric Mean Return
+  formula: "R_G = [(1+R1)(1+R2)...(1+Rn)]^(1/n) - 1"
+  latex: "R_G = \\left[\\prod_{i=1}^{n}(1+R_i)\\right]^{1/n} - 1"
+  intuition: "The true compound growth rate over multiple periods. If you earn +50% then -50%, your arithmetic mean is 0% but you actually LOST 25% of your money. Geometric mean shows the truth."
+  memory_hook: "Multiply, then nth-root, then minus 1. Always ≤ Arithmetic Mean."
+  tags: [returns, mean, level1]
+  options:
+    - "Average of all returns"
+    - "Nth root of product of (1+Ri) terms, minus 1"
+    - "Sum of returns / n"
+    - "Harmonic mean of returns"
+  correct_option: 1
+
+- id: qm_007
+  topic: Quantitative Methods
+  subtopic: Returns
+  name: Mean Hierarchy (AM > GM > HM)
+  formula: "AM ≥ GM ≥ HM (equality only when all values identical)"
+  latex: "\\bar{X}_{arith} \\geq \\bar{X}_{geo} \\geq \\bar{X}_{harm}"
+  intuition: "Arithmetic mean overstates compound growth. Harmonic mean is best for averaging RATES when you invest the SAME DOLLAR AMOUNT each period (cost averaging). GM is best for compound returns over time."
+  memory_hook: "AGH — Always Going Harmonic. AM > GM > HM."
+  tags: [returns, mean, statistics, level1]
+  options:
+    - "AM > HM > GM"
+    - "GM > AM > HM"
+    - "AM ≥ GM ≥ HM"
+    - "HM ≥ GM ≥ AM"
+  correct_option: 2
+
+- id: qm_008
+  topic: Quantitative Methods
+  subtopic: Statistics
+  name: Sample Variance
+  formula: "s² = Σ(Xi - X̄)² / (n-1)"
+  latex: "s^2 = \\frac{\\sum_{i=1}^{n}(X_i - \\bar{X})^2}{n-1}"
+  intuition: "Measures how spread out data is around the mean. We divide by n-1 (not n) to correct for sample bias — Bessel's correction. Population variance uses N."
+  memory_hook: "Sample: n-1 in denominator. Population: N. The -1 corrects for using sample mean instead of true mean."
+  tags: [statistics, dispersion, level1]
+  options:
+    - "Σ(Xi - X̄)² / n"
+    - "Σ(Xi - X̄)² / (n-1)"
+    - "Σ|Xi - X̄| / n"
+    - "Σ(Xi - X̄) / (n-1)"
+  correct_option: 1
+
+- id: qm_009
+  topic: Quantitative Methods
+  subtopic: Statistics
+  name: Coefficient of Variation (CV)
+  formula: "CV = s / X̄"
+  latex: "CV = \\frac{s}{\\bar{X}}"
+  intuition: "Risk per unit of return. Useful for comparing investments with different scales. A CV of 0.5 means 50 cents of risk for every dollar of expected return."
+  memory_hook: "CV = Std Dev ÷ Mean. Lower = better (less risk per unit of return)."
+  tags: [statistics, risk, level1]
+  options:
+    - "CV = Mean / Std Dev"
+    - "CV = Std Dev / Mean"
+    - "CV = Variance / Mean"
+    - "CV = Std Dev × Mean"
+  correct_option: 1
+
+- id: qm_010
+  topic: Quantitative Methods
+  subtopic: Probability
+  name: Bayes Formula
+  formula: "P(Event|Info) = P(Info|Event) × P(Event) / P(Info)"
+  latex: "P(E|I) = \\frac{P(I|E) \\times P(E)}{P(I)}"
+  intuition: "Updates prior probability using new information. Start with a prior, receive new evidence, get a posterior. The foundation of rational belief updating."
+  memory_hook: "Posterior = Likelihood × Prior / Evidence. Flip the conditional."
+  tags: [probability, bayes, level1]
+  options:
+    - "P(E|I) = P(I|E) / P(E)"
+    - "P(E|I) = P(I|E) × P(I) / P(E)"
+    - "P(E|I) = P(I|E) × P(E) / P(I)"
+    - "P(E|I) = P(E) × P(I)"
+  correct_option: 2
+
+- id: qm_011
+  topic: Quantitative Methods
+  subtopic: Probability
+  name: Portfolio Variance (2 assets)
+  formula: "σ²(Rp) = w_A²σ²_A + w_B²σ²_B + 2·w_A·w_B·Cov(A,B)"
+  latex: "\\sigma^2_p = w_A^2\\sigma_A^2 + w_B^2\\sigma_B^2 + 2w_Aw_B\\sigma_A\\sigma_B\\rho_{AB}"
+  intuition: "Diversification benefit comes from correlation. If ρ = -1 (perfect negative), you can build a risk-free portfolio. If ρ = +1, no diversification benefit at all."
+  memory_hook: "Three parts: variance of A + variance of B + covariance term. Correlation drives diversification."
+  tags: [portfolio, statistics, core, level1]
+  options:
+    - "w_A²σ²_A + w_B²σ²_B"
+    - "w_A²σ²_A + w_B²σ²_B + Cov(A,B)"
+    - "w_A²σ²_A + w_B²σ²_B + 2·w_A·w_B·Cov(A,B)"
+    - "(w_A·σ_A + w_B·σ_B)²"
+  correct_option: 2
+
+- id: qm_012
+  topic: Quantitative Methods
+  subtopic: Hypothesis Testing
+  name: t-statistic (single mean)
+  formula: "t = (X̄ - μ₀) / (s / √n)"
+  latex: "t = \\frac{\\bar{X} - \\mu_0}{s/\\sqrt{n}}"
+  intuition: "How many standard errors is the sample mean away from the hypothesized population mean? The further away, the more evidence against H₀."
+  memory_hook: "t = (observed - hypothesized) / standard error. df = n - 1."
+  tags: [hypothesis, statistics, level1]
+  options:
+    - "t = (X̄ - μ₀) / σ"
+    - "t = (X̄ - μ₀) / (s / √n)"
+    - "t = (X̄ - μ₀) × √n / s"
+    - "t = (X̄ - μ₀) / s"
+  correct_option: 1
+
+- id: qm_013
+  topic: Quantitative Methods
+  subtopic: Regression
+  name: R² (Coefficient of Determination)
+  formula: "R² = SSR/SST = 1 - SSE/SST"
+  latex: "R^2 = \\frac{SSR}{SST} = 1 - \\frac{SSE}{SST}"
+  intuition: "% of variation in Y explained by X. R² = 0.70 means the regression explains 70% of the variance in the dependent variable. Also equals ρ² for simple regression."
+  memory_hook: "R² = Explained/Total. SST = SSR + SSE. For simple regression, R² = correlation²."
+  tags: [regression, statistics, level1]
+  options:
+    - "R² = SSE / SST"
+    - "R² = SSR / SSE"
+    - "R² = SSR / SST"
+    - "R² = 1 - SSR/SST"
+  correct_option: 2
+
+- id: qm_014
+  topic: Quantitative Methods
+  subtopic: Returns
+  name: Safety First Ratio (Roy)
+  formula: "SF Ratio = (E(Rp) - RL) / σp"
+  latex: "SF = \\frac{E(R_p) - R_L}{\\sigma_p}"
+  intuition: "Like Sharpe but with a minimum acceptable return instead of risk-free rate. Maximize this ratio to minimize the probability of falling below your threshold RL."
+  memory_hook: "SF = (Expected return - Threshold) / Std Dev. Higher = better. Maximize to minimize shortfall risk."
+  tags: [risk, portfolio, level1]
+  options:
+    - "(E(Rp) - Rf) / σp"
+    - "(E(Rp) - RL) / σp"
+    - "σp / (E(Rp) - RL)"
+    - "(E(Rp) - RL) / σp²"
+  correct_option: 1
+
+- id: qm_015
+  topic: Quantitative Methods
+  subtopic: Regression
+  name: Slope Coefficient (Simple Regression)
+  formula: "b = Cov(X,Y) / Var(X) = ρ × (σY / σX)"
+  latex: "\\hat{b} = \\frac{Cov(X,Y)}{Var(X)} = \\rho \\cdot \\frac{\\sigma_Y}{\\sigma_X}"
+  intuition: "How much Y changes for a 1-unit change in X. Two equivalent formulas: covariance-based or correlation-based. The intercept a = Ȳ - b·X̄."
+  memory_hook: "Slope = Cov/Var = ρ × (σY/σX). Always passes through (X̄, Ȳ)."
+  tags: [regression, statistics, level1]
+  options:
+    - "b = Cov(X,Y) / Var(Y)"
+    - "b = Var(X) / Cov(X,Y)"
+    - "b = Cov(X,Y) / Var(X)"
+    - "b = ρ × σX / σY"
+  correct_option: 2

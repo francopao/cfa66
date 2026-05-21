@@ -1,0 +1,177 @@
+# Financial Statement Analysis — Formulas & Key Concepts
+
+- id: fsa_001
+  topic: Financial Statement Analysis
+  subtopic: Cash Flow Statement
+  name: FCFF from CFO
+  formula: "FCFF = CFO + Int×(1-t) - FCI"
+  latex: "FCFF = CFO + I(1-t) - FCI"
+  intuition: "CFO already has interest deducted (it's in NI). To get FCFF (pre-debt), add interest back on after-tax basis. Then subtract capex (investing to maintain the business)."
+  memory_hook: "CFO + after-tax interest - capex = FCFF. Simpler than NI route."
+  tags: [fsa, cashflow, fcff, level1]
+  options:
+    - "FCFF = CFO - Int×(1-t) - FCI"
+    - "FCFF = CFO + Int×(1-t) + FCI"
+    - "FCFF = CFO + Int×(1-t) - FCI"
+    - "FCFF = CFO - FCI"
+  correct_option: 2
+
+- id: fsa_002
+  topic: Financial Statement Analysis
+  subtopic: Cash Flow Statement
+  name: CFO Indirect Method
+  formula: "CFO = Net Income + Non-Cash Charges ± WC Changes ± CFI/CFF items"
+  latex: "CFO = NI + Dep + \\Delta CL - \\Delta CA_{non-cash}"
+  intuition: "Start with accrual NI, then reverse non-cash items (depreciation) and adjust for WC changes. An increase in current liabilities is a source of cash; increase in current assets is a use."
+  memory_hook: "NI + Depreciation ± WC. Receivables↑ → cash used (subtract). Payables↑ → cash saved (add)."
+  tags: [fsa, cashflow, level1]
+  options:
+    - "CFO = NI - Depreciation ± WC"
+    - "CFO = NI + Non-Cash Charges ± WC Changes"
+    - "CFO = Revenue - COGS - Operating Expenses"
+    - "CFO = EBIT × (1 - tax rate)"
+  correct_option: 1
+
+- id: fsa_003
+  topic: Financial Statement Analysis
+  subtopic: Ratios
+  name: Activity Ratios Overview
+  formula: "AR Turnover = Sales/Avg AR | Inv Turnover = COGS/Avg Inv | AP Turnover = Purchases/Avg AP"
+  latex: "\\text{AR}_T = \\frac{Sales}{\\_AR}; \\quad \\text{Inv}_T = \\frac{COGS}{\\overline{Inv}}"
+  intuition: "Activity ratios measure efficiency. How fast does inventory sell? How quickly do customers pay? How long do you take to pay suppliers? These drive the cash conversion cycle."
+  memory_hook: "AR uses Sales. Inventory uses COGS. AP uses Purchases. Days = 365 / Turnover."
+  tags: [fsa, ratios, activity, level1]
+  options:
+    - "AR Turnover = COGS / Avg AR"
+    - "Inventory Turnover = Sales / Avg Inventory"
+    - "AR Turnover = Sales/Avg AR; Inv Turnover = COGS/Avg Inv"
+    - "All activity ratios use Sales in the numerator"
+  correct_option: 2
+
+- id: fsa_004
+  topic: Financial Statement Analysis
+  subtopic: Inventory
+  name: LIFO vs FIFO (Rising Prices)
+  formula: "FIFO: Higher EI, Lower COGS, Higher NI | LIFO: Lower EI, Higher COGS, Lower NI"
+  latex: "\\text{Rising prices: FIFO} \\Rightarrow NI\\uparrow, \\text{LIFO} \\Rightarrow NI\\downarrow"
+  intuition: "When prices rise, FIFO puts old (cheaper) costs into COGS and new (expensive) items into inventory. LIFO does the opposite. Result: FIFO shows higher profits but higher taxes. LIFO gives lower taxes, lower stated earnings."
+  memory_hook: "FIFO: first in = cheapest costs out → lower COGS → higher NI → more taxes. LIFO: opposite."
+  tags: [fsa, inventory, ifrs, level1]
+  options:
+    - "In rising prices, LIFO gives higher net income"
+    - "In rising prices, FIFO gives higher ending inventory AND lower COGS"
+    - "FIFO and LIFO always give same results"
+    - "LIFO is allowed under IFRS"
+  correct_option: 1
+
+- id: fsa_005
+  topic: Financial Statement Analysis
+  subtopic: Inventory
+  name: LIFO Reserve Adjustment
+  formula: "EI_FIFO = EI_LIFO + LIFO Reserve | COGS_FIFO = COGS_LIFO - ΔLIFO Reserve"
+  latex: "EI_{FIFO} = EI_{LIFO} + \\text{LIFO Reserve}"
+  intuition: "Analysts adjust LIFO companies to FIFO for comparability. LIFO reserve is disclosed in the footnotes. Add it to inventory to get FIFO inventory. Subtract the change in reserve from COGS."
+  memory_hook: "FIFO Inventory = LIFO Inventory + LIFO Reserve. Crucial for comparing US GAAP (LIFO allowed) vs IFRS (LIFO banned)."
+  tags: [fsa, inventory, lifo, level1]
+  options:
+    - "EI_FIFO = EI_LIFO - LIFO Reserve"
+    - "EI_FIFO = EI_LIFO + LIFO Reserve"
+    - "COGS_FIFO = COGS_LIFO + ΔLIFO Reserve"
+    - "LIFO Reserve is not relevant for analysis"
+  correct_option: 1
+
+- id: fsa_006
+  topic: Financial Statement Analysis
+  subtopic: Depreciation
+  name: Straight-Line Depreciation
+  formula: "SLD = (Cost - Residual Value) / Useful Life"
+  latex: "D_{SL} = \\frac{Cost - Salvage}{N}"
+  intuition: "Simplest method: equal expense every year. Assets wear out evenly. Pro: simple. Con: may not reflect economic reality. IFRS allows revaluation; US GAAP uses cost model only."
+  memory_hook: "SLD = (Cost - Salvage) ÷ Life. Equal depreciation each period. Easy to calculate."
+  tags: [fsa, depreciation, long_lived_assets, level1]
+  options:
+    - "SLD = Cost / Useful Life"
+    - "SLD = (Cost - Residual Value) / Useful Life"
+    - "SLD = Book Value × (2 / Useful Life)"
+    - "SLD = Cost × Useful Life / 2"
+  correct_option: 1
+
+- id: fsa_007
+  topic: Financial Statement Analysis
+  subtopic: Depreciation
+  name: Double-Declining Balance (DDB)
+  formula: "DDB = (Book Value / Useful Life) × 2"
+  latex: "D_{DDB} = \\frac{BV_t}{N} \\times 2"
+  intuition: "Accelerated method: higher depreciation early, lower later. More closely matches assets that lose value faster early (cars, tech). Switches to straight-line when SL > DDB."
+  memory_hook: "DDB = Opening Book Value × (2/Life). Apply to declining book value each year (not original cost)."
+  tags: [fsa, depreciation, long_lived_assets, level1]
+  options:
+    - "DDB = (Cost - Salvage) × 2 / Life"
+    - "DDB = Cost × 2 / Life"
+    - "DDB = Book Value × (2 / Useful Life)"
+    - "DDB = Book Value / (2 × Useful Life)"
+  correct_option: 2
+
+- id: fsa_008
+  topic: Financial Statement Analysis
+  subtopic: Taxes
+  name: Income Tax Expense
+  formula: "Income Tax Exp = Taxes Payable + ΔDTL - ΔDTA"
+  latex: "\\text{Tax Exp} = \\text{Taxes Payable} + \\Delta DTL - \\Delta DTA"
+  intuition: "Book tax expense ≠ cash taxes paid. DTL: you'll pay MORE taxes in the future (e.g., accelerated depreciation for tax). DTA: you'll pay LESS in the future (e.g., warranty expenses already deducted for book)."
+  memory_hook: "DTL = pay later (deferred payment) → adds to tax expense. DTA = prepaid taxes → reduces expense."
+  tags: [fsa, taxes, deferred, level1]
+  options:
+    - "Tax Expense = Taxes Payable only"
+    - "Tax Expense = Taxes Payable - ΔDTL + ΔDTA"
+    - "Tax Expense = Taxes Payable + ΔDTL - ΔDTA"
+    - "Tax Expense = ΔDTL - ΔDTA"
+  correct_option: 2
+
+- id: fsa_009
+  topic: Financial Statement Analysis
+  subtopic: Ratios
+  name: Interest Coverage Ratio
+  formula: "Interest Coverage = EBIT / Interest Payments"
+  latex: "\\text{Interest Coverage} = \\frac{EBIT}{\\text{Interest}}"
+  intuition: "How many times can operating earnings cover interest expense? < 1.5x is very risky. Higher is safer. Banks use this heavily in credit analysis. Also called 'times interest earned.'"
+  memory_hook: "EBIT / Interest. How many times does operating income cover the interest bill?"
+  tags: [fsa, solvency, ratios, level1]
+  options:
+    - "EBITDA / Interest"
+    - "Net Income / Interest"
+    - "EBIT / Interest"
+    - "CFO / Interest"
+  correct_option: 2
+
+- id: fsa_010
+  topic: Financial Statement Analysis
+  subtopic: EPS
+  name: Basic EPS
+  formula: "Basic EPS = (Net Income - Preferred Dividends) / Weighted Average Shares"
+  latex: "EPS = \\frac{NI - Preferred\\ Div}{\\overline{Shares}}"
+  intuition: "Earnings attributable to each common share. Subtract preferred dividends first (they have priority). Weight shares by fraction of year outstanding."
+  memory_hook: "Basic EPS: NI minus preferred dividends, divided by weighted average common shares. No dilution."
+  tags: [fsa, eps, level1]
+  options:
+    - "NI / Total Shares Outstanding"
+    - "(NI - Preferred Dividends) / Weighted Average Shares"
+    - "NI / Diluted Shares"
+    - "(NI + Preferred Dividends) / Weighted Average Shares"
+  correct_option: 1
+
+- id: fsa_011
+  topic: Financial Statement Analysis
+  subtopic: Ratios
+  name: Average Asset Age (Estimation)
+  formula: "Average Age = Accumulated Depreciation / Annual Depreciation Expense"
+  latex: "\\text{Avg Age} = \\frac{\\text{Accum. Dep}}{\\text{Annual Dep}}"
+  intuition: "A quick way to estimate how 'old' a company's asset base is. High ratio = aging assets that may need replacement. Useful when comparing capital intensity across peers."
+  memory_hook: "How much is used up (accumulated dep) ÷ how much used each year = average age. Remaining life = Net Block / Annual Dep."
+  tags: [fsa, long_lived_assets, level1]
+  options:
+    - "Gross Block / Annual Depreciation"
+    - "Accumulated Depreciation × Annual Depreciation"
+    - "Accumulated Depreciation / Annual Depreciation"
+    - "Net Block / Annual Depreciation"
+  correct_option: 2
