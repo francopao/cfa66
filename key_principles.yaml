@@ -1,0 +1,162 @@
+# Key Principles & Theorems — CFA Level I
+# These are conceptual cards, not formula cards
+
+- id: concept_001
+  topic: Fixed Income
+  subtopic: Bond Pricing
+  name: Four Bond Pricing Relationships
+  formula: "Inverse | Convexity | Coupon | Maturity effects"
+  latex: "\\text{Price} \\propto 1/\\text{Yield (with convexity)}"
+  intuition: |
+    1. INVERSE: Price moves opposite to yield (always).
+    2. CONVEXITY: A yield DECREASE raises price MORE than an equivalent yield INCREASE lowers it.
+    3. COUPON EFFECT: Low-coupon bonds are more sensitive to yield changes than high-coupon bonds.
+    4. MATURITY EFFECT: Longer bonds are more sensitive to yield changes than shorter bonds.
+  memory_hook: "ICMM — Inverse, Convexity, coupon effect (low coupon = more sensitive), Maturity effect (longer = more sensitive)."
+  tags: [fixed_income, principles, level1]
+  options:
+    - "Price and yield move in the same direction"
+    - "Yield decreases and increases have symmetric price impact"
+    - "High coupon bonds are more yield-sensitive than low coupon"
+    - "Price-yield relationship is convex: yield drops have larger price impact than equivalent yield rises"
+  correct_option: 3
+
+- id: concept_002
+  topic: Quantitative Methods
+  subtopic: Hypothesis Testing
+  name: Type I vs Type II Errors
+  formula: "Type I (α): Reject true H₀ | Type II (β): Fail to reject false H₀"
+  latex: "\\alpha = P(\\text{reject} H_0 | H_0 \\text{ true}); \\quad \\beta = P(\\text{fail to reject} H_0 | H_0 \\text{ false})"
+  intuition: |
+    Type I: False positive — you conclude there's an effect when there isn't. Probability = significance level (α).
+    Type II: False negative — you miss a real effect. Probability = β.
+    Power = 1 - β = probability of correctly detecting a true effect.
+    Trade-off: lowering α (stricter test) increases β.
+  memory_hook: "Type I = cry wolf (false alarm). Type II = miss the wolf. Power = 1-β = ability to detect truth."
+  tags: [quantitative, hypothesis, level1]
+  options:
+    - "Type I error: fail to reject a false null hypothesis"
+    - "Type II error: reject a true null hypothesis"
+    - "Power of test = 1 - α"
+    - "Type I error = rejecting a true null; Type II = failing to reject a false null"
+  correct_option: 3
+
+- id: concept_003
+  topic: Equity Investments
+  subtopic: Market Efficiency
+  name: Forms of Market Efficiency (EMH)
+  formula: "Weak: past prices | Semi-strong: all public | Strong: all info"
+  latex: "\\text{Weak} \\subset \\text{Semi-strong} \\subset \\text{Strong}"
+  intuition: |
+    Weak form: Prices reflect all PAST PRICE data. Technical analysis doesn't beat the market.
+    Semi-strong: Prices reflect all PUBLIC information. Fundamental analysis doesn't beat the market.
+    Strong: Prices reflect ALL information (including private). Even insiders can't beat the market.
+    Each level includes the previous: semi-strong implies weak form too.
+  memory_hook: "Weak = price history only. Semi = price + public info. Strong = everything. Nested like Russian dolls."
+  tags: [equity, emh, market_structure, level1]
+  options:
+    - "Weak form: prices reflect all public information"
+    - "Semi-strong: past prices only are reflected"
+    - "Strong form: technical analysis doesn't work but fundamental does"
+    - "Weak: past prices | Semi-strong: all public info | Strong: all info including private"
+  correct_option: 3
+
+- id: concept_004
+  topic: Fixed Income
+  subtopic: Credit Analysis
+  name: Four Cs of Credit Analysis
+  formula: "Capacity, Collateral, Covenants, Character"
+  latex: "\\text{4 Cs: Capacity, Collateral, Covenants, Character}"
+  intuition: |
+    CAPACITY: Can the borrower repay? (cash flow, income, ratios)
+    COLLATERAL: What assets back the debt if they default?
+    COVENANTS: What protections do lenders have (restrictions on borrower)?
+    CHARACTER: Management's integrity and track record.
+  memory_hook: "4 Cs: CAN they pay (Capacity), WHAT backs it (Collateral), WHAT are the rules (Covenants), WHO are they (Character)."
+  tags: [fixed_income, credit, level1]
+  options:
+    - "Capacity, Capital, Conditions, Character"
+    - "Capacity, Collateral, Covenants, Character"
+    - "Credit, Collateral, Covenants, Character"
+    - "Capacity, Collateral, Coverage, Character"
+  correct_option: 1
+
+- id: concept_005
+  topic: Financial Statement Analysis
+  subtopic: Inventory
+  name: IFRS vs US GAAP — Inventory Key Differences
+  formula: "LIFO allowed: US GAAP only | Reversals: IFRS only"
+  latex: "\\text{LIFO: US GAAP only} \\quad \\text{Writedown reversal: IFRS only}"
+  intuition: |
+    KEY DIFFERENCES:
+    1. LIFO is BANNED under IFRS, allowed under US GAAP.
+    2. Inventory writedowns CAN be reversed under IFRS (up to original carrying value), CANNOT under US GAAP.
+    3. Inventory measurement: IFRS uses lower of cost or NRV; US GAAP uses lower of cost or market value.
+  memory_hook: "IFRS bans LIFO. IFRS allows reversals. US GAAP: LIFO ok, no reversals. 'IFRS is more flexible on write-ups.'"
+  tags: [fsa, inventory, ifrs_gaap, level1]
+  options:
+    - "LIFO is allowed under both IFRS and US GAAP"
+    - "Inventory writedown reversals are allowed under US GAAP only"
+    - "LIFO allowed: US GAAP only; Reversals: IFRS only"
+    - "IFRS requires FIFO; US GAAP allows any method"
+  correct_option: 2
+
+- id: concept_006
+  topic: Fixed Income
+  subtopic: Securitization
+  name: Securitization Process
+  formula: "Originator → SPV → ABS → Investors"
+  latex: "\\text{Originator} \\xrightarrow{\\text{sells loans}} SPV \\xrightarrow{\\text{issues}} ABS \\rightarrow \\text{Investors}"
+  intuition: |
+    Why securitize? Originators transfer credit risk off balance sheet, get immediate cash, can issue more loans.
+    The SPV (Special Purpose Vehicle) is bankruptcy-remote — isolated from originator's financial distress.
+    Tranching redistributes risk: senior tranches have priority in payments, absorb losses last.
+  memory_hook: "Bank makes loans → sells to SPV → SPV issues bonds backed by those loans → investors buy bonds. SPV is the key middle piece."
+  tags: [fixed_income, securitization, abs, level1]
+  options:
+    - "Originator holds all securitized loans on balance sheet"
+    - "SPV and originator share the same balance sheet"
+    - "Originator → SPV (bankruptcy-remote) → issues ABS to investors"
+    - "Investors loan money directly to borrowers in securitization"
+  correct_option: 2
+
+- id: concept_007
+  topic: Equity Investments
+  subtopic: Porter's Framework
+  name: Porter's Five Forces
+  formula: "Substitutes + Customers + Suppliers + Entrants + Rivalry"
+  latex: "\\text{Industry profitability} = f(\\text{5 forces})"
+  intuition: |
+    1. Threat of substitutes (alternative products reduce pricing power)
+    2. Bargaining power of customers (concentrated buyers can demand lower prices)
+    3. Bargaining power of suppliers (concentrated suppliers extract more value)
+    4. Threat of new entrants (low barriers = more competition)
+    5. Intensity of rivalry (concentrated industries with high switching costs = better pricing)
+    More favorable forces → higher sustainable profitability.
+  memory_hook: "SSCER: Substitutes, Suppliers, Customers, Entrants, Rivalry. Each force that's WEAKER is better for the industry."
+  tags: [equity, industry_analysis, level1]
+  options:
+    - "Five forces are: competition, regulation, technology, customers, government"
+    - "Substitutes, Customers, Suppliers, New Entrants, Rivalry"
+    - "Strong supplier power is GOOD for industry profitability"
+    - "High entry barriers reduce industry profitability"
+  correct_option: 1
+
+- id: concept_008
+  topic: Quantitative Methods
+  subtopic: Distributions
+  name: Central Limit Theorem (CLT)
+  formula: "For n≥30: X̄ ~ N(μ, σ²/n) regardless of population distribution"
+  latex: "\\bar{X} \\xrightarrow{d} N\\left(\\mu, \\frac{\\sigma^2}{n}\\right) \\text{ as } n \\to \\infty"
+  intuition: |
+    Regardless of the underlying population's distribution shape, the distribution of sample means approaches a normal distribution as sample size increases (n≥30 is the practical rule).
+    This is WHY we can use z and t tests even when the population isn't normal — as long as n is large enough.
+    Standard error of the mean = σ/√n (shrinks as n grows).
+  memory_hook: "CLT: large enough sample (n≥30) → sample mean is approximately normal. SE = σ/√n. Foundation of all inference."
+  tags: [quantitative, statistics, clt, level1]
+  options:
+    - "CLT requires the population to be normally distributed"
+    - "CLT applies only when n < 30"
+    - "For n≥30, sample means are approximately normally distributed regardless of population shape"
+    - "CLT states that sample means equal population mean exactly"
+  correct_option: 2
