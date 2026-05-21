@@ -4,6 +4,7 @@ and returns unified card objects.
 """
 import yaml
 import os
+from datetime import date
 from typing import List, Dict, Any
 
 CONTENT_DIR = os.path.join(os.path.dirname(__file__), "..", "content")
@@ -60,3 +61,17 @@ def get_cards_by_topic(topic: str, all_cards: List[Dict]) -> List[Dict]:
 
 def get_topics(all_cards: List[Dict]) -> List[str]:
     return sorted(set(c.get("topic", "Unknown") for c in all_cards))
+
+
+def get_due_cards(progress: dict, all_card_ids: List[str]) -> List[str]:
+    """Return card IDs due today (new cards first, then overdue)."""
+    due = []
+    new = []
+    for cid in all_card_ids:
+        if cid not in progress.get("cards", {}):
+            new.append(cid)
+        else:
+            next_review = progress["cards"][cid].get("next_review", "")
+            if next_review <= date.today().isoformat():
+                due.append(cid)
+    return new + due
